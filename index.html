@@ -1,0 +1,2403 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DraftaCV — Business Acquisition Documentation</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+<style>
+  :root {
+    --bg: #050508;
+    --bg2: #0a0a0f;
+    --bg3: #111116;
+    --card: #141419;
+    --card-hover: #1a1a20;
+    --border: #1e1e28;
+    --border-hover: #2a2a3a;
+    --teal: #1C7FA8;
+    --mint: #2EC58F;
+    --teal-light: #2494c2;
+    --mint-light: #45d6a2;
+    --text: #eaeaf0;
+    --text-secondary: #b0b0c0;
+    --muted: #6a6a82;
+    --white: #ffffff;
+    --danger: #ef4444;
+    --gold: #f5c842;
+    --radius: 16px;
+    --radius-sm: 10px;
+    --radius-xs: 6px;
+    --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    font-weight: 400;
+    line-height: 1.7;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* ========== SCROLLBAR ========== */
+  ::-webkit-scrollbar { width: 6px; }
+  ::-webkit-scrollbar-track { background: var(--bg); }
+  ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+  ::-webkit-scrollbar-thumb:hover { background: var(--muted); }
+
+  /* ========== ANIMATIONS ========== */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(40px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  @keyframes scaleIn {
+    from { opacity: 0; transform: scale(0.92); }
+    to { opacity: 1; transform: scale(1); }
+  }
+
+  @keyframes slideInLeft {
+    from { opacity: 0; transform: translateX(-30px); }
+    to { opacity: 1; transform: translateX(0); }
+  }
+
+  @keyframes slideInRight {
+    from { opacity: 0; transform: translateX(30px); }
+    to { opacity: 1; transform: translateX(0); }
+  }
+
+  @keyframes shimmer {
+    0% { background-position: -200% 0; }
+    100% { background-position: 200% 0; }
+  }
+
+  @keyframes pulse-dot {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.4; transform: scale(1.8); }
+  }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+  }
+
+  @keyframes gradient-shift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+
+  @keyframes count-up {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .reveal {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .reveal-delay-1 { transition-delay: 0.1s; }
+  .reveal-delay-2 { transition-delay: 0.2s; }
+  .reveal-delay-3 { transition-delay: 0.3s; }
+  .reveal-delay-4 { transition-delay: 0.4s; }
+  .reveal-delay-5 { transition-delay: 0.5s; }
+
+  .stagger-child {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .stagger-parent.visible .stagger-child {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .stagger-parent.visible .stagger-child:nth-child(1) { transition-delay: 0.05s; }
+  .stagger-parent.visible .stagger-child:nth-child(2) { transition-delay: 0.1s; }
+  .stagger-parent.visible .stagger-child:nth-child(3) { transition-delay: 0.15s; }
+  .stagger-parent.visible .stagger-child:nth-child(4) { transition-delay: 0.2s; }
+  .stagger-parent.visible .stagger-child:nth-child(5) { transition-delay: 0.25s; }
+  .stagger-parent.visible .stagger-child:nth-child(6) { transition-delay: 0.3s; }
+  .stagger-parent.visible .stagger-child:nth-child(7) { transition-delay: 0.35s; }
+  .stagger-parent.visible .stagger-child:nth-child(8) { transition-delay: 0.4s; }
+  .stagger-parent.visible .stagger-child:nth-child(9) { transition-delay: 0.45s; }
+  .stagger-parent.visible .stagger-child:nth-child(10) { transition-delay: 0.5s; }
+
+  /* ========== GRAIN OVERLAY ========== */
+  body::after {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.02'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 9999;
+    opacity: 0.4;
+  }
+
+  /* ========== NAV ========== */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 1000;
+    background: rgba(5,5,8,0.75);
+    backdrop-filter: blur(24px) saturate(1.4);
+    -webkit-backdrop-filter: blur(24px) saturate(1.4);
+    border-bottom: 1px solid rgba(30,30,40,0.6);
+    height: 72px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background var(--transition), box-shadow var(--transition);
+  }
+
+  nav.scrolled {
+    background: rgba(5,5,8,0.92);
+    box-shadow: 0 1px 40px rgba(0,0,0,0.3);
+  }
+
+  .nav-inner {
+    width: 100%;
+    max-width: 1280px;
+    padding: 0 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .nav-logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+  }
+
+  .nav-logo img {
+    height: 34px;
+    width: auto;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 8px;
+    list-style: none;
+  }
+
+  .nav-links a {
+    color: var(--muted);
+    text-decoration: none;
+    font-size: 13.5px;
+    font-weight: 500;
+    padding: 8px 14px;
+    border-radius: 8px;
+    transition: color var(--transition), background var(--transition);
+    letter-spacing: -0.01em;
+  }
+
+  .nav-links a:hover {
+    color: var(--text);
+    background: rgba(255,255,255,0.04);
+  }
+
+  .nav-badge {
+    background: linear-gradient(135deg, var(--teal), var(--mint));
+    color: #000;
+    font-size: 12px;
+    font-weight: 700;
+    padding: 8px 20px;
+    border-radius: 100px;
+    letter-spacing: -0.01em;
+    transition: opacity var(--transition), transform var(--transition);
+    cursor: default;
+  }
+
+  .nav-badge:hover {
+    opacity: 0.9;
+    transform: translateY(-1px);
+  }
+
+  /* Mobile menu */
+  .nav-toggle {
+    display: none;
+    background: none;
+    border: none;
+    color: var(--text);
+    font-size: 22px;
+    cursor: pointer;
+    padding: 8px;
+    border-radius: 8px;
+    transition: background var(--transition);
+  }
+
+  .nav-toggle:hover { background: rgba(255,255,255,0.05); }
+
+  /* ========== HERO ========== */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 140px 40px 100px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-glow {
+    position: absolute;
+    width: 700px;
+    height: 700px;
+    border-radius: 50%;
+    filter: blur(120px);
+    pointer-events: none;
+    opacity: 0.12;
+  }
+
+  .hero-glow-1 {
+    background: var(--teal);
+    top: 20%;
+    left: 30%;
+    animation: float 12s ease-in-out infinite;
+  }
+
+  .hero-glow-2 {
+    background: var(--mint);
+    bottom: 10%;
+    right: 20%;
+    animation: float 14s ease-in-out infinite reverse;
+  }
+
+  .hero-grid-bg {
+    position: absolute;
+    inset: 0;
+    background-image: 
+      linear-gradient(rgba(30,30,40,0.3) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(30,30,40,0.3) 1px, transparent 1px);
+    background-size: 80px 80px;
+    mask-image: radial-gradient(ellipse 60% 50% at 50% 50%, black 0%, transparent 70%);
+    -webkit-mask-image: radial-gradient(ellipse 60% 50% at 50% 50%, black 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .hero-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: rgba(28,127,168,0.08);
+    border: 1px solid rgba(28,127,168,0.18);
+    color: var(--teal-light);
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: 8px 22px;
+    border-radius: 100px;
+    margin-bottom: 32px;
+    animation: fadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.2s both;
+  }
+
+  .hero-eyebrow::before {
+    content: '';
+    width: 7px; height: 7px;
+    border-radius: 50%;
+    background: var(--mint);
+    animation: pulse-dot 2.5s ease-in-out infinite;
+  }
+
+  .hero h1 {
+    font-size: clamp(42px, 6.5vw, 80px);
+    font-weight: 800;
+    line-height: 1.05;
+    margin-bottom: 24px;
+    letter-spacing: -0.04em;
+    animation: fadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.35s both;
+  }
+
+  .hero h1 .gradient-text {
+    background: linear-gradient(135deg, var(--teal-light) 0%, var(--mint) 50%, var(--teal-light) 100%);
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: gradient-shift 6s ease infinite;
+  }
+
+  .hero-sub {
+    font-size: 17px;
+    color: var(--text-secondary);
+    max-width: 580px;
+    margin: 0 auto 60px;
+    line-height: 1.8;
+    font-weight: 400;
+    animation: fadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.5s both;
+    letter-spacing: -0.01em;
+  }
+
+  .hero-metrics {
+    display: flex;
+    gap: 1px;
+    background: var(--border);
+    border-radius: var(--radius);
+    overflow: hidden;
+    animation: scaleIn 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.65s both;
+    border: 1px solid var(--border);
+  }
+
+  .metric {
+    text-align: center;
+    padding: 28px 32px;
+    background: var(--card);
+    flex: 1;
+    min-width: 140px;
+    transition: background var(--transition);
+  }
+
+  .metric:hover {
+    background: var(--card-hover);
+  }
+
+  .metric-value {
+    font-size: 32px;
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    line-height: 1;
+    margin-bottom: 6px;
+    background: linear-gradient(135deg, var(--teal-light), var(--mint));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .metric-label {
+    font-size: 11px;
+    color: var(--muted);
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+
+  /* ========== CONTAINER ========== */
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 40px;
+  }
+
+  /* ========== SECTIONS ========== */
+  section {
+    padding: 120px 0;
+    position: relative;
+  }
+
+  .section-header {
+    margin-bottom: 64px;
+  }
+
+  .section-eyebrow {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--teal-light);
+    margin-bottom: 16px;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .section-eyebrow::before {
+    content: '';
+    width: 20px;
+    height: 1px;
+    background: var(--teal);
+  }
+
+  .section-title {
+    font-size: clamp(30px, 4vw, 48px);
+    font-weight: 800;
+    line-height: 1.1;
+    margin-bottom: 16px;
+    letter-spacing: -0.035em;
+  }
+
+  .section-sub {
+    color: var(--text-secondary);
+    font-size: 16px;
+    max-width: 520px;
+    line-height: 1.8;
+    letter-spacing: -0.01em;
+  }
+
+  /* ========== DIVIDER ========== */
+  .divider {
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--border), transparent);
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  /* ========== CARDS GRID ========== */
+  .cards-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+  }
+
+  .card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 32px;
+    transition: border-color var(--transition), transform var(--transition), box-shadow var(--transition), background var(--transition);
+    position: relative;
+    overflow: hidden;
+    cursor: default;
+  }
+
+  .card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--mint), transparent);
+    opacity: 0;
+    transition: opacity var(--transition);
+  }
+
+  .card:hover {
+    border-color: var(--border-hover);
+    transform: translateY(-4px);
+    box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+    background: var(--card-hover);
+  }
+
+  .card:hover::before { opacity: 0.6; }
+
+  .card-icon {
+    width: 48px; height: 48px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    margin-bottom: 20px;
+    transition: transform var(--transition);
+  }
+
+  .card:hover .card-icon { transform: scale(1.1); }
+
+  .card-icon.teal { background: rgba(28,127,168,0.1); border: 1px solid rgba(28,127,168,0.15); }
+  .card-icon.mint { background: rgba(46,197,143,0.1); border: 1px solid rgba(46,197,143,0.15); }
+  .card-icon.purple { background: rgba(124,58,237,0.1); border: 1px solid rgba(124,58,237,0.15); }
+  .card-icon.gold { background: rgba(245,200,66,0.1); border: 1px solid rgba(245,200,66,0.15); }
+
+  .card h3 {
+    font-size: 16px;
+    font-weight: 700;
+    margin-bottom: 8px;
+    letter-spacing: -0.02em;
+  }
+
+  .card p {
+    font-size: 14px;
+    color: var(--muted);
+    line-height: 1.7;
+    letter-spacing: -0.01em;
+  }
+
+  /* ========== FLOWCHART ========== */
+  .flowchart {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 48px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .flowchart::before {
+    content: '';
+    position: absolute;
+    top: -150px; right: -150px;
+    width: 400px; height: 400px;
+    background: radial-gradient(circle, rgba(28,127,168,0.04) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .flow-section-title {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 28px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .flow-section-title::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+  }
+
+  .flow-row {
+    display: flex;
+    align-items: stretch;
+    gap: 0;
+    margin-bottom: 40px;
+    flex-wrap: wrap;
+  }
+
+  .flow-step {
+    flex: 1;
+    min-width: 130px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .flow-step-number {
+    width: 32px; height: 32px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--teal), var(--mint));
+    color: #000;
+    font-weight: 800;
+    font-size: 13px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 12px;
+    flex-shrink: 0;
+  }
+
+  .flow-step-box {
+    background: var(--bg3);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    padding: 16px 12px;
+    margin: 0 6px;
+    flex: 1;
+    transition: border-color var(--transition), background var(--transition);
+  }
+
+  .flow-step-box.highlight {
+    border-color: rgba(28,127,168,0.25);
+    background: rgba(28,127,168,0.04);
+  }
+
+  .flow-step-box.highlight:hover {
+    border-color: rgba(28,127,168,0.4);
+    background: rgba(28,127,168,0.07);
+  }
+
+  .flow-step-box.highlight2 {
+    border-color: rgba(46,197,143,0.25);
+    background: rgba(46,197,143,0.04);
+  }
+
+  .flow-step-box.highlight2:hover {
+    border-color: rgba(46,197,143,0.4);
+    background: rgba(46,197,143,0.07);
+  }
+
+  .flow-step-icon {
+    font-size: 22px;
+    margin-bottom: 8px;
+  }
+
+  .flow-step-label {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 4px;
+    letter-spacing: -0.01em;
+  }
+
+  .flow-step-desc {
+    font-size: 11px;
+    color: var(--muted);
+    line-height: 1.5;
+  }
+
+  .flow-arrow {
+    font-size: 18px;
+    color: var(--teal-light);
+    opacity: 0.5;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-bottom: 28px;
+    margin: 0 -2px;
+  }
+
+  .flow-divider {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin: 8px 0 32px;
+    color: var(--muted);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .flow-divider-line {
+    flex: 1;
+    height: 1px;
+    border-bottom: 1px dashed var(--border);
+  }
+
+  /* ========== TECH STACK ========== */
+  .tech-stack {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 12px;
+  }
+
+  .tech-item {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    padding: 20px 24px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    transition: border-color var(--transition), transform var(--transition), background var(--transition);
+  }
+
+  .tech-item:hover {
+    border-color: var(--border-hover);
+    transform: translateY(-2px);
+    background: var(--card-hover);
+  }
+
+  .tech-icon {
+    font-size: 24px;
+    flex-shrink: 0;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(28,127,168,0.06);
+    border-radius: 10px;
+  }
+
+  .tech-name {
+    font-size: 14px;
+    font-weight: 700;
+    margin-bottom: 2px;
+    letter-spacing: -0.01em;
+  }
+
+  .tech-desc {
+    font-size: 12px;
+    color: var(--muted);
+  }
+
+  /* ========== ASSETS TABLE ========== */
+  .table-wrapper {
+    border-radius: var(--radius);
+    overflow: hidden;
+    border: 1px solid var(--border);
+  }
+
+  .assets-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: var(--card);
+  }
+
+  .assets-table th {
+    background: var(--bg3);
+    padding: 14px 24px;
+    text-align: left;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .assets-table td {
+    padding: 16px 24px;
+    font-size: 14px;
+    border-bottom: 1px solid var(--border);
+    vertical-align: middle;
+    letter-spacing: -0.01em;
+    transition: background var(--transition);
+  }
+
+  .assets-table tr:last-child td { border-bottom: none; }
+  .assets-table tr:hover td { background: rgba(255,255,255,0.015); }
+
+  .badge {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 600;
+    padding: 4px 12px;
+    border-radius: 100px;
+    letter-spacing: 0.01em;
+  }
+
+  .badge-green { background: rgba(46,197,143,0.1); color: var(--mint); border: 1px solid rgba(46,197,143,0.18); }
+  .badge-blue { background: rgba(28,127,168,0.1); color: var(--teal-light); border: 1px solid rgba(28,127,168,0.18); }
+  .badge-gold { background: rgba(245,200,66,0.1); color: var(--gold); border: 1px solid rgba(245,200,66,0.18); }
+  .badge-purple { background: rgba(124,58,237,0.1); color: #a78bfa; border: 1px solid rgba(124,58,237,0.18); }
+
+  /* ========== FINANCIALS ========== */
+  .financials-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-bottom: 24px;
+  }
+
+  .fin-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 32px;
+    transition: border-color var(--transition), transform var(--transition);
+  }
+
+  .fin-card:hover {
+    border-color: var(--border-hover);
+    transform: translateY(-2px);
+  }
+
+  .fin-card.highlight {
+    background: linear-gradient(135deg, rgba(28,127,168,0.06), rgba(46,197,143,0.04));
+    border-color: rgba(28,127,168,0.2);
+  }
+
+  .fin-label {
+    font-size: 11px;
+    color: var(--muted);
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 14px;
+  }
+
+  .fin-value {
+    font-size: 34px;
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    margin-bottom: 6px;
+  }
+
+  .fin-value.accent { color: var(--mint); }
+  .fin-value.gold { color: var(--gold); }
+
+  .fin-note {
+    font-size: 13px;
+    color: var(--muted);
+    letter-spacing: -0.01em;
+  }
+
+  /* ========== SCREENSHOTS ========== */
+  .screenshots-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+
+  .screenshot-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    overflow: hidden;
+    transition: border-color var(--transition), transform var(--transition), box-shadow var(--transition);
+  }
+
+  .screenshot-card:hover {
+    border-color: var(--border-hover);
+    transform: translateY(-4px);
+    box-shadow: 0 24px 60px rgba(0,0,0,0.25);
+  }
+
+  .screenshot-header {
+    background: var(--bg3);
+    padding: 12px 20px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .dot { width: 10px; height: 10px; border-radius: 50%; }
+  .dot-red { background: #ff5f57; }
+  .dot-yellow { background: #febc2e; }
+  .dot-green { background: #28c840; }
+
+  .screenshot-label {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--muted);
+    margin-left: 8px;
+    font-family: 'JetBrains Mono', monospace;
+  }
+
+  .screenshot-img {
+    width: 100%;
+    display: block;
+    aspect-ratio: 16/9;
+    object-fit: cover;
+    background: var(--bg2);
+  }
+
+  .screenshot-caption {
+    padding: 16px 20px;
+    font-size: 13px;
+    color: var(--muted);
+    line-height: 1.6;
+  }
+
+  .screenshot-caption strong {
+    color: var(--text);
+    display: block;
+    margin-bottom: 4px;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+  }
+
+  /* ========== CMS FEATURES ========== */
+  .cms-features {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+  }
+
+  .cms-feat {
+    background: var(--bg3);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    padding: 20px;
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    transition: border-color var(--transition), background var(--transition);
+  }
+
+  .cms-feat:hover {
+    border-color: var(--border-hover);
+    background: var(--card);
+  }
+
+  .cms-feat-icon {
+    font-size: 18px;
+    flex-shrink: 0;
+    margin-top: 2px;
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(28,127,168,0.06);
+    border-radius: 8px;
+  }
+
+  .cms-feat-name {
+    font-size: 14px;
+    font-weight: 700;
+    margin-bottom: 4px;
+    letter-spacing: -0.01em;
+  }
+
+  .cms-feat-desc {
+    font-size: 12px;
+    color: var(--muted);
+    line-height: 1.6;
+  }
+
+  /* ========== PACKAGES ========== */
+  .packages-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+  }
+
+  .pkg-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 32px;
+    position: relative;
+    transition: border-color var(--transition), transform var(--transition), box-shadow var(--transition);
+  }
+
+  .pkg-card:hover {
+    border-color: var(--border-hover);
+    transform: translateY(-4px);
+    box-shadow: 0 20px 60px rgba(0,0,0,0.2);
+  }
+
+  .pkg-card.popular {
+    border-color: rgba(46,197,143,0.35);
+    background: linear-gradient(180deg, rgba(46,197,143,0.04) 0%, var(--card) 100%);
+  }
+
+  .pkg-popular-badge {
+    position: absolute;
+    top: -12px; left: 50%; transform: translateX(-50%);
+    background: linear-gradient(135deg, var(--teal), var(--mint));
+    color: #000;
+    font-size: 11px;
+    font-weight: 800;
+    padding: 5px 18px;
+    border-radius: 100px;
+    white-space: nowrap;
+    letter-spacing: -0.01em;
+  }
+
+  .pkg-name { font-size: 16px; font-weight: 800; margin-bottom: 8px; letter-spacing: -0.02em; }
+  .pkg-price { font-family: 'JetBrains Mono', monospace; font-size: 26px; font-weight: 600; color: var(--mint); margin-bottom: 4px; }
+  .pkg-target { font-size: 12px; color: var(--muted); margin-bottom: 24px; }
+  .pkg-features { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+  .pkg-features li { font-size: 13px; color: var(--text-secondary); display: flex; gap: 10px; align-items: flex-start; letter-spacing: -0.01em; }
+  .pkg-features li::before { content: '→'; color: var(--teal-light); flex-shrink: 0; font-weight: 600; }
+
+  /* ========== VALUATION ========== */
+  .valuation-box {
+    background: linear-gradient(135deg, rgba(28,127,168,0.06), rgba(46,197,143,0.04));
+    border: 1px solid rgba(28,127,168,0.18);
+    border-radius: 20px;
+    padding: 60px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .valuation-box::before {
+    content: '';
+    position: absolute;
+    top: -50%; left: -50%;
+    width: 200%; height: 200%;
+    background: radial-gradient(circle at 50% 50%, rgba(28,127,168,0.03) 0%, transparent 60%);
+    pointer-events: none;
+  }
+
+  .valuation-price {
+    font-size: clamp(48px, 7vw, 88px);
+    font-weight: 900;
+    background: linear-gradient(135deg, var(--teal-light), var(--mint));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    line-height: 1;
+    margin-bottom: 8px;
+    letter-spacing: -0.04em;
+  }
+
+  .valuation-sub {
+    font-size: 16px;
+    color: var(--text-secondary);
+    margin-bottom: 40px;
+    letter-spacing: -0.01em;
+  }
+
+  .valuation-range {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+
+  .val-item {
+    background: rgba(255,255,255,0.03);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    padding: 20px 32px;
+    text-align: center;
+    transition: border-color var(--transition), background var(--transition);
+  }
+
+  .val-item:hover {
+    border-color: var(--border-hover);
+    background: rgba(255,255,255,0.04);
+  }
+
+  .val-label { font-size: 11px; color: var(--muted); font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 8px; }
+  .val-amount { font-family: 'JetBrains Mono', monospace; font-size: 18px; font-weight: 600; }
+  .val-amount.min { color: #ff9944; }
+  .val-amount.ask { color: var(--mint); }
+  .val-amount.usd { color: var(--teal-light); }
+
+  /* ========== CHECKLIST ========== */
+  .checklist {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .check-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    padding: 20px 24px;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    transition: border-color var(--transition), transform var(--transition);
+  }
+
+  .check-item:hover {
+    border-color: var(--border-hover);
+    transform: translateX(4px);
+  }
+
+  .check-icon {
+    width: 24px; height: 24px;
+    border-radius: 50%;
+    background: rgba(46,197,143,0.12);
+    color: var(--mint);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    flex-shrink: 0;
+    margin-top: 2px;
+    font-weight: 700;
+  }
+
+  .check-text { font-size: 14px; line-height: 1.7; letter-spacing: -0.01em; }
+  .check-text strong { color: var(--text); font-weight: 700; }
+  .check-text span { color: var(--muted); }
+
+  /* ========== CTA ========== */
+  .cta-section {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 72px 48px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .cta-section::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at 50% 120%, rgba(28,127,168,0.06) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .cta-section h2 {
+    font-size: clamp(32px, 4vw, 44px);
+    font-weight: 800;
+    margin-bottom: 16px;
+    letter-spacing: -0.035em;
+    position: relative;
+  }
+
+  .cta-section > p {
+    color: var(--text-secondary);
+    font-size: 16px;
+    margin-bottom: 40px;
+    max-width: 480px;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.8;
+    position: relative;
+    letter-spacing: -0.01em;
+  }
+
+  .cta-buttons {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    flex-wrap: wrap;
+    position: relative;
+  }
+
+  .btn-primary {
+    background: linear-gradient(135deg, var(--teal), var(--mint));
+    color: #000;
+    font-weight: 700;
+    font-size: 14px;
+    padding: 14px 32px;
+    border-radius: 100px;
+    text-decoration: none;
+    letter-spacing: -0.01em;
+    transition: opacity var(--transition), transform var(--transition), box-shadow var(--transition);
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .btn-primary:hover {
+    opacity: 0.92;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 30px rgba(28,127,168,0.25);
+  }
+
+  .btn-secondary {
+    background: transparent;
+    color: var(--text);
+    font-weight: 600;
+    font-size: 14px;
+    padding: 14px 32px;
+    border-radius: 100px;
+    text-decoration: none;
+    border: 1px solid var(--border);
+    transition: border-color var(--transition), transform var(--transition), background var(--transition);
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    letter-spacing: -0.01em;
+  }
+
+  .btn-secondary:hover {
+    border-color: var(--teal);
+    transform: translateY(-2px);
+    background: rgba(28,127,168,0.04);
+  }
+
+  /* ========== COST BREAKDOWN ========== */
+  .cost-box {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 32px;
+  }
+
+  .cost-box-title {
+    font-size: 12px;
+    color: var(--muted);
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+  }
+
+  .cost-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 12px;
+  }
+
+  .cost-item {
+    text-align: center;
+    padding: 20px;
+    background: var(--bg3);
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--border);
+    transition: border-color var(--transition), transform var(--transition);
+  }
+
+  .cost-item:hover {
+    border-color: var(--border-hover);
+    transform: translateY(-2px);
+  }
+
+  .cost-value {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 4px;
+  }
+
+  .cost-value.green { color: var(--mint); }
+  .cost-value.gold { color: var(--gold); }
+
+  .cost-label {
+    font-size: 12px;
+    color: var(--muted);
+  }
+
+  /* ========== SEO BOX ========== */
+  .seo-box {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 32px;
+    margin-top: 20px;
+  }
+
+  .seo-title {
+    font-size: 12px;
+    color: var(--muted);
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 24px;
+  }
+
+  .seo-metrics {
+    display: flex;
+    gap: 48px;
+    flex-wrap: wrap;
+    margin-bottom: 24px;
+  }
+
+  .seo-metric-value {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 32px;
+    font-weight: 600;
+    line-height: 1;
+  }
+
+  .seo-metric-label {
+    font-size: 13px;
+    color: var(--muted);
+    margin-top: 6px;
+  }
+
+  .buyer-note {
+    font-size: 14px;
+    color: var(--muted);
+    line-height: 1.8;
+    padding: 20px;
+    background: var(--bg3);
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--border);
+    letter-spacing: -0.01em;
+  }
+
+  .buyer-note strong { color: var(--text); }
+
+  /* ========== TRANSFER STEPS ========== */
+  .transfer-box {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 32px;
+  }
+
+  .transfer-title {
+    font-size: 12px;
+    color: var(--muted);
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+  }
+
+  .transfer-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 12px;
+  }
+
+  .transfer-step {
+    text-align: center;
+    padding: 24px 16px;
+    background: var(--bg3);
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--border);
+    transition: border-color var(--transition), transform var(--transition);
+  }
+
+  .transfer-step:hover {
+    border-color: var(--border-hover);
+    transform: translateY(-2px);
+  }
+
+  .transfer-step-icon {
+    font-size: 28px;
+    margin-bottom: 10px;
+  }
+
+  .transfer-step-num {
+    font-size: 13px;
+    font-weight: 700;
+    margin-bottom: 4px;
+    letter-spacing: -0.01em;
+  }
+
+  .transfer-step-desc {
+    font-size: 12px;
+    color: var(--muted);
+    line-height: 1.4;
+  }
+
+  /* ========== PAYMENT INFO ========== */
+  .payment-info {
+    margin-top: 32px;
+    font-size: 13px;
+    color: var(--muted);
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+
+  .payment-info code {
+    font-family: 'JetBrains Mono', monospace;
+    background: var(--bg3);
+    border: 1px solid var(--border);
+    padding: 3px 10px;
+    border-radius: var(--radius-xs);
+    font-size: 12px;
+    color: var(--teal-light);
+  }
+
+  /* ========== FOOTER ========== */
+  footer {
+    border-top: 1px solid var(--border);
+    padding: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .footer-inner {
+    max-width: 1200px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .footer-logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .footer-logo img {
+    height: 28px;
+    width: auto;
+    opacity: 0.7;
+  }
+
+  .footer-center {
+    font-size: 13px;
+    color: var(--muted);
+    letter-spacing: -0.01em;
+  }
+
+  .footer-right {
+    font-size: 13px;
+    color: var(--muted);
+    letter-spacing: -0.01em;
+  }
+
+  .footer-right a {
+    color: var(--teal-light);
+    text-decoration: none;
+    transition: color var(--transition);
+  }
+
+  .footer-right a:hover { color: var(--mint); }
+
+  /* ========== CODE ========== */
+  code {
+    font-family: 'JetBrains Mono', monospace;
+    background: var(--bg3);
+    border: 1px solid var(--border);
+    padding: 2px 8px;
+    border-radius: var(--radius-xs);
+    font-size: 13px;
+    color: var(--teal-light);
+  }
+
+  /* ========== RESPONSIVE ========== */
+  @media (max-width: 1024px) {
+    .cards-grid { grid-template-columns: repeat(2, 1fr); }
+    .cms-features { grid-template-columns: repeat(2, 1fr); }
+    .packages-grid { grid-template-columns: repeat(2, 1fr); }
+    .transfer-grid { grid-template-columns: repeat(3, 1fr); }
+  }
+
+  @media (max-width: 768px) {
+    .nav-inner { padding: 0 20px; }
+    .nav-links { display: none; }
+    .nav-toggle { display: block; }
+    .nav-badge { display: none; }
+
+    /* Mobile nav overlay */
+    .nav-links.open {
+      display: flex;
+      flex-direction: column;
+      position: fixed;
+      top: 72px;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(5,5,8,0.97);
+      backdrop-filter: blur(24px);
+      padding: 20px;
+      gap: 4px;
+      z-index: 999;
+      animation: fadeIn 0.3s ease;
+    }
+
+    .nav-links.open a {
+      font-size: 16px;
+      padding: 14px 16px;
+      border-radius: 10px;
+    }
+
+    .nav-links.open a:hover {
+      background: rgba(255,255,255,0.05);
+    }
+
+    .container { padding: 0 20px; }
+    section { padding: 80px 0; }
+    .hero { padding: 120px 20px 60px; }
+    .hero h1 { font-size: 36px; letter-spacing: -0.03em; }
+    .hero-sub { font-size: 15px; margin-bottom: 40px; }
+    .hero-metrics { flex-direction: column; border-radius: var(--radius-sm); gap: 1px; }
+    .metric { padding: 20px; }
+    .section-header { margin-bottom: 40px; }
+    .section-title { font-size: 28px; }
+    .financials-grid { grid-template-columns: 1fr; }
+    .screenshots-grid { grid-template-columns: 1fr; }
+    .cards-grid { grid-template-columns: 1fr; }
+    .cms-features { grid-template-columns: 1fr; }
+    .packages-grid { grid-template-columns: 1fr; }
+    .flow-row { flex-direction: column; align-items: center; gap: 4px; }
+    .flow-arrow { transform: rotate(90deg); padding: 0; margin: 4px 0; }
+    .flow-step { min-width: auto; width: 100%; }
+    .flowchart { padding: 28px 20px; }
+    .cta-section { padding: 48px 24px; }
+    .valuation-box { padding: 40px 24px; }
+    .transfer-grid { grid-template-columns: 1fr 1fr; }
+    .seo-metrics { gap: 24px; }
+    footer { padding: 24px 20px; }
+    .footer-inner { flex-direction: column; gap: 12px; text-align: center; }
+  }
+
+  @media (max-width: 480px) {
+    .valuation-range { flex-direction: column; align-items: center; }
+    .val-item { width: 100%; }
+    .transfer-grid { grid-template-columns: 1fr; }
+    .cta-buttons { flex-direction: column; align-items: center; }
+    .btn-primary, .btn-secondary { width: 100%; justify-content: center; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ========== NAV ========== -->
+<nav>
+  <div class="nav-inner">
+    <a href="#" class="nav-logo">
+      <img src="i/Asset 6.png" alt="DraftaCV Logo">
+    </a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#overview">Overview</a></li>
+      <li><a href="#how-it-works">How It Works</a></li>
+      <li><a href="#cms">CMS</a></li>
+      <li><a href="#tech">Tech Stack</a></li>
+      <li><a href="#financials">Financials</a></li>
+      <li><a href="#assets">Assets</a></li>
+      <li><a href="#valuation">Valuation</a></li>
+    </ul>
+    <div style="display:flex;align-items:center;gap:12px;">
+      <div class="nav-badge">For Acquisition</div>
+      <button class="nav-toggle" id="navToggle" aria-label="Menu">
+        <i class="fas fa-bars"></i>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<!-- ========== HERO ========== -->
+<div class="hero" id="overview">
+  <div class="hero-glow hero-glow-1"></div>
+  <div class="hero-glow hero-glow-2"></div>
+  <div class="hero-grid-bg"></div>
+
+  <div class="hero-eyebrow">Acquisition Opportunity — 2026</div>
+  <h1>A Profitable <span class="gradient-text">CV Writing</span><br>Business, Ready to Transfer</h1>
+  <p class="hero-sub">DraftaCV is a fully operational resume writing service with a custom-built CMS, free ATS checker tool, and proven organic SEO traction — generating real revenue from day one.</p>
+
+  <div class="hero-metrics">
+    <div class="metric">
+      <div class="metric-value">IDR 40M</div>
+      <div class="metric-label">Revenue in 6.5 Months</div>
+    </div>
+    <div class="metric">
+      <div class="metric-value">75%</div>
+      <div class="metric-label">Profit Margin</div>
+    </div>
+    <div class="metric">
+      <div class="metric-value">8K+</div>
+      <div class="metric-label">Organic Impressions</div>
+    </div>
+    <div class="metric">
+      <div class="metric-value">$0</div>
+      <div class="metric-label">Build Cost</div>
+    </div>
+    <div class="metric">
+      <div class="metric-value">30</div>
+      <div class="metric-label">Blog Posts Published</div>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- ========== WHAT YOU GET ========== -->
+<section>
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="section-eyebrow">What's Included</div>
+      <h2 class="section-title">A Complete Business,<br>Not Just a Website</h2>
+      <p class="section-sub">Every asset needed to operate DraftaCV from day one is included in this sale. No additional development required.</p>
+    </div>
+
+    <div class="cards-grid stagger-parent reveal">
+      <div class="card stagger-child">
+        <div class="card-icon teal">🌐</div>
+        <h3>Full Website + Domain</h3>
+        <p>draftacv.com — professionally designed, ATS-optimized service website with service packages, sample gallery, FAQ, and blog. Fully live and indexed.</p>
+      </div>
+      <div class="card stagger-child">
+        <div class="card-icon mint">⚙️</div>
+        <h3>Custom-Built CMS</h3>
+        <p>Proprietary admin dashboard built from scratch. Manages submissions, invoices, blog posts, coupon codes, and revenue analytics in one place.</p>
+      </div>
+      <div class="card stagger-child">
+        <div class="card-icon purple">🤖</div>
+        <h3>Free ATS Checker Tool</h3>
+        <p>Built-in ATS resume scanner that acts as a lead magnet — drives organic users to the site who then convert into paying customers.</p>
+      </div>
+      <div class="card stagger-child">
+        <div class="card-icon gold">🔥</div>
+        <h3>Firebase Backend</h3>
+        <p>Entire backend runs on Firebase — zero server cost, near-zero monthly operating cost. Authentication, database, and hosting all included.</p>
+      </div>
+      <div class="card stagger-child">
+        <div class="card-icon teal">📝</div>
+        <h3>30 Published Blog Posts</h3>
+        <p>SEO-optimized career content already published and indexed. Contributes to the 8,000+ organic impressions recorded in Google Search Console.</p>
+      </div>
+      <div class="card stagger-child">
+        <div class="card-icon mint">📱</div>
+        <h3>Brand & Social Assets</h3>
+        <p>Instagram account (@draftacv), WhatsApp business pipeline, logo, brand kit — all transferable. Dual-market presence in Bangladesh and Indonesia.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ========== HOW IT WORKS ========== -->
+<section id="how-it-works">
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="section-eyebrow">System Architecture</div>
+      <h2 class="section-title">How DraftaCV Works</h2>
+      <p class="section-sub">A streamlined two-sided flow — customers submit on the frontend, operations are managed entirely on the backend CMS.</p>
+    </div>
+
+    <div class="flowchart reveal">
+      <div class="flow-section-title">Customer Journey — Frontend</div>
+      <div class="flow-row">
+        <div class="flow-step">
+          <div class="flow-step-number">1</div>
+          <div class="flow-step-box highlight">
+            <div class="flow-step-icon">👤</div>
+            <div class="flow-step-label">Visit Website</div>
+            <div class="flow-step-desc">Visitor lands on draftacv.com via organic search, referral, or social</div>
+          </div>
+        </div>
+        <div class="flow-arrow"><i class="fas fa-arrow-right"></i></div>
+        <div class="flow-step">
+          <div class="flow-step-number">2</div>
+          <div class="flow-step-box highlight">
+            <div class="flow-step-icon">📦</div>
+            <div class="flow-step-label">Select Package</div>
+            <div class="flow-step-desc">Chooses Basic (৳999), Professional (৳1,999), or Executive Elite (৳3,999)</div>
+          </div>
+        </div>
+        <div class="flow-arrow"><i class="fas fa-arrow-right"></i></div>
+        <div class="flow-step">
+          <div class="flow-step-number">3</div>
+          <div class="flow-step-box highlight">
+            <div class="flow-step-icon">✍️</div>
+            <div class="flow-step-label">Fill Form</div>
+            <div class="flow-step-desc">Submits personal info, job experience, education, skills, files, and notes</div>
+          </div>
+        </div>
+        <div class="flow-arrow"><i class="fas fa-arrow-right"></i></div>
+        <div class="flow-step">
+          <div class="flow-step-number">4</div>
+          <div class="flow-step-box highlight">
+            <div class="flow-step-icon">🏷️</div>
+            <div class="flow-step-label">Apply Coupon</div>
+            <div class="flow-step-desc">Optional: enters discount or affiliate coupon code for price reduction</div>
+          </div>
+        </div>
+        <div class="flow-arrow"><i class="fas fa-arrow-right"></i></div>
+        <div class="flow-step">
+          <div class="flow-step-number">5</div>
+          <div class="flow-step-box highlight">
+            <div class="flow-step-icon">✅</div>
+            <div class="flow-step-label">Submit Order</div>
+            <div class="flow-step-desc">Order submitted and logged in Firebase. Customer receives confirmation.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="flow-divider">
+        <div class="flow-divider-line"></div>
+        <span>⬇ Order Arrives in CMS ⬇</span>
+        <div class="flow-divider-line"></div>
+      </div>
+
+      <div class="flow-section-title">Operations — Backend CMS</div>
+      <div class="flow-row" style="margin-bottom: 0;">
+        <div class="flow-step">
+          <div class="flow-step-number">6</div>
+          <div class="flow-step-box highlight2">
+            <div class="flow-step-icon">📋</div>
+            <div class="flow-step-label">Review Submission</div>
+            <div class="flow-step-desc">Admin reviews full order details: personal, job, education, certifications, skills</div>
+          </div>
+        </div>
+        <div class="flow-arrow"><i class="fas fa-arrow-right"></i></div>
+        <div class="flow-step">
+          <div class="flow-step-number">7</div>
+          <div class="flow-step-box highlight2">
+            <div class="flow-step-icon">🧾</div>
+            <div class="flow-step-label">Send Invoice</div>
+            <div class="flow-step-desc">System generates and sends invoice with unique ID to customer</div>
+          </div>
+        </div>
+        <div class="flow-arrow"><i class="fas fa-arrow-right"></i></div>
+        <div class="flow-step">
+          <div class="flow-step-number">8</div>
+          <div class="flow-step-box highlight2">
+            <div class="flow-step-icon">💳</div>
+            <div class="flow-step-label">Payment Confirmed</div>
+            <div class="flow-step-desc">Admin marks payment as "Received" in CMS. Status updates automatically.</div>
+          </div>
+        </div>
+        <div class="flow-arrow"><i class="fas fa-arrow-right"></i></div>
+        <div class="flow-step">
+          <div class="flow-step-number">9</div>
+          <div class="flow-step-box highlight2">
+            <div class="flow-step-icon">🎨</div>
+            <div class="flow-step-label">CV Crafted</div>
+            <div class="flow-step-desc">Resume created and delivered within package SLA (24–72 hours)</div>
+          </div>
+        </div>
+        <div class="flow-arrow"><i class="fas fa-arrow-right"></i></div>
+        <div class="flow-step">
+          <div class="flow-step-number">10</div>
+          <div class="flow-step-box highlight2">
+            <div class="flow-step-icon">🚀</div>
+            <div class="flow-step-label">Marked Delivered</div>
+            <div class="flow-step-desc">CMS status updated to "Delivered." Revenue tracked in analytics dashboard.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ========== CMS DEEP DIVE ========== -->
+<section id="cms">
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="section-eyebrow">Backend System</div>
+      <h2 class="section-title">The Custom CMS —<br>Built From Scratch</h2>
+      <p class="section-sub">A fully proprietary admin system. No third-party CMS license required. Secured by Firebase Authentication.</p>
+    </div>
+
+    <div class="cms-features stagger-parent reveal" style="margin-bottom: 40px;">
+      <div class="cms-feat stagger-child">
+        <div class="cms-feat-icon">📊</div>
+        <div>
+          <div class="cms-feat-name">Analytics Dashboard</div>
+          <div class="cms-feat-desc">Overview of total posts, published, drafts, featured — all in one screen</div>
+        </div>
+      </div>
+      <div class="cms-feat stagger-child">
+        <div class="cms-feat-icon">📝</div>
+        <div>
+          <div class="cms-feat-name">Rich Blog Editor</div>
+          <div class="cms-feat-desc">Full-featured editor with powerful formatting tools, content calendar, and one-click publish</div>
+        </div>
+      </div>
+      <div class="cms-feat stagger-child">
+        <div class="cms-feat-icon">📋</div>
+        <div>
+          <div class="cms-feat-name">Submission Management</div>
+          <div class="cms-feat-desc">View all customer orders with tabs for Personal, Job, Experience, Education, Certifications, Skills, Files, Notes</div>
+        </div>
+      </div>
+      <div class="cms-feat stagger-child">
+        <div class="cms-feat-icon">🧾</div>
+        <div>
+          <div class="cms-feat-name">Invoice Generation</div>
+          <div class="cms-feat-desc">Auto-generates invoice IDs per submission. Tracks payment status and delivery status</div>
+        </div>
+      </div>
+      <div class="cms-feat stagger-child">
+        <div class="cms-feat-icon">🏷️</div>
+        <div>
+          <div class="cms-feat-name">Coupon Management</div>
+          <div class="cms-feat-desc">Create and manage percentage or fixed-amount coupons with usage limits, expiry dates, and package-level targeting</div>
+        </div>
+      </div>
+      <div class="cms-feat stagger-child">
+        <div class="cms-feat-icon">⚡</div>
+        <div>
+          <div class="cms-feat-name">Urgency Flagging</div>
+          <div class="cms-feat-desc">Mark submissions as urgent directly from the CMS to prioritize delivery queue</div>
+        </div>
+      </div>
+      <div class="cms-feat stagger-child">
+        <div class="cms-feat-icon">📅</div>
+        <div>
+          <div class="cms-feat-name">Content Calendar</div>
+          <div class="cms-feat-desc">Plan and schedule blog posts with a visual calendar — no guesswork for content planning</div>
+        </div>
+      </div>
+      <div class="cms-feat stagger-child">
+        <div class="cms-feat-icon">🌙</div>
+        <div>
+          <div class="cms-feat-name">Dark Mode Interface</div>
+          <div class="cms-feat-desc">Full dark mode toggle built-in for comfortable daily operation</div>
+        </div>
+      </div>
+      <div class="cms-feat stagger-child">
+        <div class="cms-feat-icon">🔐</div>
+        <div>
+          <div class="cms-feat-name">Firebase Auth</div>
+          <div class="cms-feat-desc">Enterprise-grade authentication securing the admin portal — credentials transfer instantly</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Screenshots -->
+    <div class="screenshots-grid stagger-parent reveal">
+      <div class="screenshot-card stagger-child">
+        <div class="screenshot-header">
+          <div class="dot dot-red"></div>
+          <div class="dot dot-yellow"></div>
+          <div class="dot dot-green"></div>
+          <span class="screenshot-label">Admin Portal — Login</span>
+        </div>
+        <img src="i/Screenshot 2026-04-03 133644.png" class="screenshot-img" alt="CMS Login" onerror="this.style.background='var(--bg3)'; this.style.minHeight='200px';">
+        <div class="screenshot-caption">
+          <strong>Secure Admin Login</strong>
+          Branded admin portal with Firebase Authentication. Features rich blog editor, content calendar, quick publish, and dark mode built in.
+        </div>
+      </div>
+      <div class="screenshot-card stagger-child">
+        <div class="screenshot-header">
+          <div class="dot dot-red"></div>
+          <div class="dot dot-yellow"></div>
+          <div class="dot dot-green"></div>
+          <span class="screenshot-label">CMS — Dashboard</span>
+        </div>
+        <img src="i/Screenshot 2026-04-03 133725.png" class="screenshot-img" alt="CMS Dashboard" onerror="this.style.background='var(--bg3)'; this.style.minHeight='200px';">
+        <div class="screenshot-caption">
+          <strong>Content Dashboard</strong>
+          At a glance: 30 total posts, 28 published, 12 featured. Recent posts visible with category tags and publish dates.
+        </div>
+      </div>
+      <div class="screenshot-card stagger-child">
+        <div class="screenshot-header">
+          <div class="dot dot-red"></div>
+          <div class="dot dot-yellow"></div>
+          <div class="dot dot-green"></div>
+          <span class="screenshot-label">CMS — Submission Detail</span>
+        </div>
+        <img src="i/Screenshot 2026-04-03 133848.png" class="screenshot-img" alt="Submission Detail" onerror="this.style.background='var(--bg3)'; this.style.minHeight='200px';">
+        <div class="screenshot-caption">
+          <strong>Order Management</strong>
+          Full submission detail view with Invoice ID, delivery status, payment status, urgency flag, and tabbed data sections.
+        </div>
+      </div>
+      <div class="screenshot-card stagger-child">
+        <div class="screenshot-header">
+          <div class="dot dot-red"></div>
+          <div class="dot dot-yellow"></div>
+          <div class="dot dot-green"></div>
+          <span class="screenshot-label">CMS — Coupon Management</span>
+        </div>
+        <img src="i/Screenshot 2026-04-03 133910.png" class="screenshot-img" alt="Coupon Management" onerror="this.style.background='var(--bg3)'; this.style.minHeight='200px';">
+        <div class="screenshot-caption">
+          <strong>Coupon System</strong>
+          9 coupons created, 23 total uses tracked. Supports percentage and fixed discounts, package targeting, country filtering, and usage limits.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ========== SERVICE PACKAGES ========== -->
+<section>
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="section-eyebrow">Revenue Model</div>
+      <h2 class="section-title">Three Clear Tiers,<br>Proven Pricing</h2>
+      <p class="section-sub">Packages priced for two active markets — Bangladesh and Indonesia. All are currently live and purchasable on the site.</p>
+    </div>
+
+    <div class="packages-grid stagger-parent reveal">
+      <div class="pkg-card stagger-child">
+        <div class="pkg-name">Basic Starter</div>
+        <div class="pkg-price">৳999</div>
+        <div class="pkg-target">Entry-level professionals</div>
+        <ul class="pkg-features">
+          <li>1 Professional Resume/CV</li>
+          <li>ATS or Non-ATS format</li>
+          <li>Standard templates</li>
+          <li>PDF & Word formats</li>
+          <li>3 days delivery</li>
+          <li>1 revision round</li>
+        </ul>
+      </div>
+      <div class="pkg-card popular stagger-child">
+        <div class="pkg-popular-badge">⭐ Most Popular</div>
+        <div class="pkg-name">Professional</div>
+        <div class="pkg-price">৳1,999</div>
+        <div class="pkg-target">Mid-career professionals</div>
+        <ul class="pkg-features">
+          <li>ATS + Non-ATS versions</li>
+          <li>Premium templates</li>
+          <li>Custom cover letter</li>
+          <li>All file formats</li>
+          <li>2 days delivery</li>
+          <li>2 revision rounds</li>
+          <li>30-min consultation</li>
+        </ul>
+      </div>
+      <div class="pkg-card stagger-child">
+        <div class="pkg-name">Executive Elite</div>
+        <div class="pkg-price">৳3,999</div>
+        <div class="pkg-target">Senior professionals</div>
+        <ul class="pkg-features">
+          <li>Multiple design versions</li>
+          <li>LinkedIn optimization</li>
+          <li>2 industry versions</li>
+          <li>24-hour delivery</li>
+          <li>Unlimited revisions (14 days)</li>
+          <li>1-hour consultation</li>
+          <li>90-day free updates</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ========== TECH STACK ========== -->
+<section id="tech">
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="section-eyebrow">Infrastructure</div>
+      <h2 class="section-title">Built to Run at<br>Near-Zero Cost</h2>
+      <p class="section-sub">The entire platform runs on Firebase — meaning near-zero monthly operating expenses. No server bills. No hosting fees. No licensing costs.</p>
+    </div>
+
+    <div class="tech-stack stagger-parent reveal" style="margin-bottom: 32px;">
+      <div class="tech-item stagger-child">
+        <div class="tech-icon">🔥</div>
+        <div>
+          <div class="tech-name">Firebase Hosting</div>
+          <div class="tech-desc">Zero-cost web hosting with CDN</div>
+        </div>
+      </div>
+      <div class="tech-item stagger-child">
+        <div class="tech-icon">🗄️</div>
+        <div>
+          <div class="tech-name">Firestore Database</div>
+          <div class="tech-desc">NoSQL real-time database</div>
+        </div>
+      </div>
+      <div class="tech-item stagger-child">
+        <div class="tech-icon">🔐</div>
+        <div>
+          <div class="tech-name">Firebase Auth</div>
+          <div class="tech-desc">Secure admin authentication</div>
+        </div>
+      </div>
+      <div class="tech-item stagger-child">
+        <div class="tech-icon">🌐</div>
+        <div>
+          <div class="tech-name">Custom Domain</div>
+          <div class="tech-desc">draftacv.com — clean, brandable</div>
+        </div>
+      </div>
+      <div class="tech-item stagger-child">
+        <div class="tech-icon">💬</div>
+        <div>
+          <div class="tech-name">WhatsApp Integration</div>
+          <div class="tech-desc">Direct customer communication</div>
+        </div>
+      </div>
+      <div class="tech-item stagger-child">
+        <div class="tech-icon">📷</div>
+        <div>
+          <div class="tech-name">Instagram @draftacv</div>
+          <div class="tech-desc">Active social presence</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="cost-box reveal">
+      <div class="cost-box-title">Monthly Operating Cost Breakdown</div>
+      <div class="cost-grid">
+        <div class="cost-item">
+          <div class="cost-value green">~$0</div>
+          <div class="cost-label">Firebase Hosting</div>
+        </div>
+        <div class="cost-item">
+          <div class="cost-value green">~$0</div>
+          <div class="cost-label">Database Cost</div>
+        </div>
+        <div class="cost-item">
+          <div class="cost-value gold">~$10</div>
+          <div class="cost-label">Domain / Year</div>
+        </div>
+        <div class="cost-item">
+          <div class="cost-value green">70%+</div>
+          <div class="cost-label">Profit Margin</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ========== FINANCIALS ========== -->
+<section id="financials">
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="section-eyebrow">Financial Performance</div>
+      <h2 class="section-title">Real Numbers,<br>Real Business</h2>
+      <p class="section-sub">Verified revenue from 6.5 months of operation. All figures available for due diligence review.</p>
+    </div>
+
+    <div class="financials-grid stagger-parent reveal">
+      <div class="fin-card highlight stagger-child">
+        <div class="fin-label">Total Revenue (6.5 Months)</div>
+        <div class="fin-value accent">IDR 40,000,000</div>
+        <div class="fin-note">≈ $2,420 USD | Verified from payment records</div>
+      </div>
+      <div class="fin-card stagger-child">
+        <div class="fin-label">Average Monthly Revenue</div>
+        <div class="fin-value" style="color: var(--teal-light);">IDR 6,150,000</div>
+        <div class="fin-note">≈ $372 USD/month</div>
+      </div>
+      <div class="fin-card stagger-child">
+        <div class="fin-label">Profit Margin</div>
+        <div class="fin-value gold">70%</div>
+        <div class="fin-note">Near-zero COGS — Firebase backend, no employees</div>
+      </div>
+      <div class="fin-card stagger-child">
+        <div class="fin-label">Monthly Net Profit</div>
+        <div class="fin-value" style="color: var(--mint);">IDR 4,305,000</div>
+        <div class="fin-note">≈ $260 USD/month after all costs</div>
+      </div>
+    </div>
+
+    <div class="seo-box reveal">
+      <div class="seo-title">Organic Growth Signal — Google Search Console</div>
+      <div class="seo-metrics">
+        <div>
+          <div class="seo-metric-value" style="color: var(--mint);">8,000+</div>
+          <div class="seo-metric-label">Organic Impressions in First 3 Months</div>
+        </div>
+        <div>
+          <div class="seo-metric-value" style="color: var(--teal-light);">30</div>
+          <div class="seo-metric-label">Published SEO Blog Posts</div>
+        </div>
+        <div>
+          <div class="seo-metric-value" style="color: var(--gold);">0</div>
+          <div class="seo-metric-label">Paid Ad Spend — 100% Organic</div>
+        </div>
+      </div>
+      <div class="buyer-note">
+        💡 <strong>Buyer Note:</strong> All organic traffic was achieved without any paid advertising. The ATS Checker tool functions as a passive lead magnet driving ongoing traffic. A buyer with basic SEO investment could significantly scale this traction.
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ========== ASSETS ========== -->
+<section id="assets">
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="section-eyebrow">Asset Inventory</div>
+      <h2 class="section-title">Everything Included<br>in This Sale</h2>
+      <p class="section-sub">A complete, transferable asset package. Nothing withheld.</p>
+    </div>
+
+    <div class="table-wrapper reveal">
+      <table class="assets-table">
+        <thead>
+          <tr>
+            <th>Asset</th>
+            <th>Description</th>
+            <th>Status</th>
+            <th>Transfer</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>draftacv.com</strong></td>
+            <td>Primary domain — clean, brandable, indexed by Google</td>
+            <td><span class="badge badge-green">Active</span></td>
+            <td><span class="badge badge-blue">Instant</span></td>
+          </tr>
+          <tr>
+            <td><strong>Full Website</strong></td>
+            <td>Frontend HTML/CSS/JS — homepage, packages, samples, blog, ATS tool, FAQ</td>
+            <td><span class="badge badge-green">Live</span></td>
+            <td><span class="badge badge-blue">48 hrs</span></td>
+          </tr>
+          <tr>
+            <td><strong>Custom CMS</strong></td>
+            <td>Proprietary admin panel — submissions, invoices, coupons, blog, analytics</td>
+            <td><span class="badge badge-green">Operational</span></td>
+            <td><span class="badge badge-blue">48 hrs</span></td>
+          </tr>
+          <tr>
+            <td><strong>Firebase Project</strong></td>
+            <td>Full Firebase project — Hosting, Firestore, Auth — all configured</td>
+            <td><span class="badge badge-green">Active</span></td>
+            <td><span class="badge badge-blue">48 hrs</span></td>
+          </tr>
+          <tr>
+            <td><strong>ATS Checker Tool</strong></td>
+            <td>Free resume scanner — embedded in site, driving organic traffic</td>
+            <td><span class="badge badge-green">Live</span></td>
+            <td><span class="badge badge-blue">Included</span></td>
+          </tr>
+          <tr>
+            <td><strong>30 Blog Posts</strong></td>
+            <td>Published, SEO-optimized career content — indexed by Google</td>
+            <td><span class="badge badge-green">Indexed</span></td>
+            <td><span class="badge badge-blue">Included</span></td>
+          </tr>
+          <tr>
+            <td><strong>Instagram @draftacv</strong></td>
+            <td>Active brand presence on Instagram</td>
+            <td><span class="badge badge-gold">Social</span></td>
+            <td><span class="badge badge-blue">Included</span></td>
+          </tr>
+          <tr>
+            <td><strong>Brand Assets</strong></td>
+            <td>Logo, color palette, brand guidelines, all creative files</td>
+            <td><span class="badge badge-purple">Design</span></td>
+            <td><span class="badge badge-blue">Included</span></td>
+          </tr>
+          <tr>
+            <td><strong>Customer Data</strong></td>
+            <td>18+ submission records, coupon history, revenue tracking data</td>
+            <td><span class="badge badge-green">Available</span></td>
+            <td><span class="badge badge-blue">Included</span></td>
+          </tr>
+          <tr>
+            <td><strong>Handover Support</strong></td>
+            <td>2-week onboarding support from founder to ensure smooth transition</td>
+            <td><span class="badge badge-gold">Bonus</span></td>
+            <td><span class="badge badge-blue">Included</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ========== WHY BUY ========== -->
+<section>
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="section-eyebrow">Investment Thesis</div>
+      <h2 class="section-title">Why This is a<br>Smart Acquisition</h2>
+      <p class="section-sub">DraftaCV is ideal for a buyer who wants an operational service business with a real tech moat — not just a template site.</p>
+    </div>
+
+    <div class="checklist stagger-parent reveal">
+      <div class="check-item stagger-child">
+        <div class="check-icon">✓</div>
+        <div class="check-text"><strong>Zero build cost, instant revenue potential</strong> <span>— The entire platform was built from scratch with $0 in development cost. Firebase means near-zero monthly overhead. Every dollar earned goes straight to profit.</span></div>
+      </div>
+      <div class="check-item stagger-child">
+        <div class="check-icon">✓</div>
+        <div class="check-text"><strong>Custom tech is a real competitive moat</strong> <span>— This isn't a Wix or WordPress site. The custom CMS and ATS tool are proprietary — a buyer gets a unique platform competitors can't easily replicate.</span></div>
+      </div>
+      <div class="check-item stagger-child">
+        <div class="check-icon">✓</div>
+        <div class="check-text"><strong>Organic SEO already working</strong> <span>— 8,000+ impressions in just 3 months from launch, with zero paid ads. A buyer with SEO focus could accelerate this dramatically.</span></div>
+      </div>
+      <div class="check-item stagger-child">
+        <div class="check-icon">✓</div>
+        <div class="check-text"><strong>Two-market opportunity (BD + ID)</strong> <span>— Already positioned in both Bangladesh and Indonesia, two of Southeast and South Asia's largest job-seeker markets. Huge untapped scale.</span></div>
+      </div>
+      <div class="check-item stagger-child">
+        <div class="check-icon">✓</div>
+        <div class="check-text"><strong>ATS tool = passive lead generation</strong> <span>— The free ATS Checker drives users organically who have high purchase intent. It's a built-in funnel that keeps working without ongoing effort.</span></div>
+      </div>
+      <div class="check-item stagger-child">
+        <div class="check-icon">✓</div>
+        <div class="check-text"><strong>Ready to operate in 48 hours</strong> <span>— Full 2-week handover support from the founder. No technical expertise required to run day-to-day operations via the CMS.</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ========== VALUATION ========== -->
+<section id="valuation">
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="section-eyebrow">Asking Price</div>
+      <h2 class="section-title">Fair Valuation,<br>Ready to Negotiate</h2>
+      <p class="section-sub">Priced for a fast, clean exit. Serious buyers can expect a smooth 48-hour transfer process.</p>
+    </div>
+
+    <div class="valuation-box reveal" style="margin-bottom: 24px;">
+      <div style="font-size: 12px; color: var(--muted); letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 16px; font-weight: 700;">Asking Price</div>
+      <div class="valuation-price">Contact for details</div>
+      <div class="valuation-sub">≈ $0 USD · Negotiable for serious buyers</div>
+      <div class="valuation-range">
+        <div class="val-item">
+          <div class="val-label">Floor Price</div>
+          <div class="val-amount min">Contact for details</div>
+        </div>
+        <div class="val-item">
+          <div class="val-label">Asking Price</div>
+          <div class="val-amount ask">Contact for details</div>
+        </div>
+        <div class="val-item">
+          <div class="val-label">USD Equivalent</div>
+          <div class="val-amount usd">Contact for details</div>
+        </div>
+        <div class="val-item">
+          <div class="val-label">Profit Multiple</div>
+          <div class="val-amount ask">~2.5x Annual</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="transfer-box reveal">
+      <div class="transfer-title">Transfer Process</div>
+      <div class="transfer-grid">
+        <div class="transfer-step">
+          <div class="transfer-step-icon">🤝</div>
+          <div class="transfer-step-num">Step 1</div>
+          <div class="transfer-step-desc">LOI / Agreement signed</div>
+        </div>
+        <div class="transfer-step">
+          <div class="transfer-step-icon">💰</div>
+          <div class="transfer-step-num">Step 2</div>
+          <div class="transfer-step-desc">Payment via Escrow / Rekber</div>
+        </div>
+        <div class="transfer-step">
+          <div class="transfer-step-icon">🌐</div>
+          <div class="transfer-step-num">Step 3</div>
+          <div class="transfer-step-desc">Domain + Firebase transfer</div>
+        </div>
+        <div class="transfer-step">
+          <div class="transfer-step-icon">📱</div>
+          <div class="transfer-step-num">Step 4</div>
+          <div class="transfer-step-desc">Social + brand handover</div>
+        </div>
+        <div class="transfer-step">
+          <div class="transfer-step-icon">🚀</div>
+          <div class="transfer-step-num">Step 5</div>
+          <div class="transfer-step-desc">2-week founder support</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ========== CTA ========== -->
+<section style="padding-bottom: 80px;">
+  <div class="container">
+    <div class="cta-section reveal">
+      <h2>Ready to Acquire<br>DraftaCV?</h2>
+      <p>Reach out directly to discuss due diligence, ask questions, or make an offer. Transfers can be completed in as little as 48 hours.</p>
+      <div class="cta-buttons">
+        <a href="https://wa.me/628131607565" class="btn-primary"><i class="fab fa-whatsapp"></i> WhatsApp the Seller</a>
+        <a href="https://draftacv.com" class="btn-secondary" target="_blank"><i class="fas fa-globe"></i> Visit Live Site</a>
+      </div>
+      <div class="payment-info">
+        Payment accepted via <code>Rekber</code> · <code>Escrow.com</code> · <code>Flippa Escrow</code> &nbsp;|&nbsp; Transfer within <code>48 hours</code>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== FOOTER ========== -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-logo">
+      <img src="i/Asset 6.png" alt="DraftaCV">
+    </div>
+    <div class="footer-center">Acquisition Documentation · Confidential · 2026</div>
+    <div class="footer-right"><a href="https://draftacv.com" target="_blank">draftacv.com</a></div>
+  </div>
+</footer>
+
+<!-- ========== SCRIPTS ========== -->
+<script>
+  // ===== Nav scroll effect =====
+  const nav = document.querySelector('nav');
+  let lastScroll = 0;
+
+  window.addEventListener('scroll', () => {
+    const currentScroll = window.scrollY;
+    if (currentScroll > 50) {
+      nav.classList.add('scrolled');
+    } else {
+      nav.classList.remove('scrolled');
+    }
+    lastScroll = currentScroll;
+  }, { passive: true });
+
+  // ===== Mobile nav toggle =====
+  const navToggle = document.getElementById('navToggle');
+  const navLinks = document.getElementById('navLinks');
+
+  navToggle.addEventListener('click', () => {
+    navLinks.classList.toggle('open');
+    const icon = navToggle.querySelector('i');
+    if (navLinks.classList.contains('open')) {
+      icon.classList.remove('fa-bars');
+      icon.classList.add('fa-times');
+    } else {
+      icon.classList.remove('fa-times');
+      icon.classList.add('fa-bars');
+    }
+  });
+
+  // Close mobile nav when clicking a link
+  navLinks.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      navLinks.classList.remove('open');
+      const icon = navToggle.querySelector('i');
+      icon.classList.remove('fa-times');
+      icon.classList.add('fa-bars');
+    });
+  });
+
+  // ===== Intersection Observer for scroll animations =====
+  const observerOptions = {
+    root: null,
+    rootMargin: '0px 0px -80px 0px',
+    threshold: 0.1
+  };
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        // Don't unobserve so we can re-animate if needed, but for perf:
+        // observer.unobserve(entry.target);
+      }
+    });
+  }, observerOptions);
+
+  // Observe all reveal elements
+  document.querySelectorAll('.reveal, .stagger-parent').forEach(el => {
+    observer.observe(el);
+  });
+
+  // ===== Smooth number counter animation =====
+  function animateCounters() {
+    const metrics = document.querySelectorAll('.metric-value');
+    metrics.forEach(metric => {
+      const text = metric.textContent;
+      metric.style.animation = 'count-up 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards';
+    });
+  }
+
+  // Trigger counter animation when hero metrics are visible
+  const heroMetrics = document.querySelector('.hero-metrics');
+  if (heroMetrics) {
+    const metricsObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          animateCounters();
+          metricsObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.5 });
+    metricsObserver.observe(heroMetrics);
+  }
+
+  // ===== Active nav link highlighting =====
+  const sections = document.querySelectorAll('section[id], .hero[id]');
+  const navLinksAll = document.querySelectorAll('.nav-links a');
+
+  window.addEventListener('scroll', () => {
+    let current = '';
+    sections.forEach(section => {
+      const sectionTop = section.offsetTop - 100;
+      if (window.scrollY >= sectionTop) {
+        current = section.getAttribute('id');
+      }
+    });
+
+    navLinksAll.forEach(link => {
+      link.style.color = '';
+      if (link.getAttribute('href') === `#${current}`) {
+        link.style.color = 'var(--text)';
+      }
+    });
+  }, { passive: true });
+
+  // ===== Parallax glow effect =====
+  document.addEventListener('mousemove', (e) => {
+    const glows = document.querySelectorAll('.hero-glow');
+    const x = (e.clientX / window.innerWidth - 0.5) * 30;
+    const y = (e.clientY / window.innerHeight - 0.5) * 30;
+    glows.forEach((glow, i) => {
+      const factor = i === 0 ? 1 : -0.7;
+      glow.style.transform = `translate(${x * factor}px, ${y * factor}px)`;
+    });
+  }, { passive: true });
+</script>
+</body>
+</html>
